@@ -1,0 +1,38 @@
+{
+  "name": "asset-versioning",
+  "version": "0.0.0",
+  "description": "Version your assets by appending a hash to the filename.",
+  "author": "Lim Yuan Qing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yuanqing/asset-versioning.git"
+  },
+  "dependencies": {
+    "fs-extra": "^5.0.0",
+    "glob": "^7.1.2",
+    "rev-file": "^3.0.0",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {
+    "nyc": "^11.4.1",
+    "prettier-standard": "^8.0.0",
+    "standard": "^11.0.0",
+    "tape": "^4.9.0",
+    "uglify-js": "^3.3.14"
+  },
+  "scripts": {
+    "clean": "rm -rf *.log coverage",
+    "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
+    "fix": "prettier-standard index.js 'test/**/*.js'",
+    "lint": "standard index.js 'test/**/*.js'",
+    "test": "tape 'test/**/*.js'"
+  },
+  "keywords": [
+    "asset",
+    "cache",
+    "rev",
+    "version",
+    "versioning"
+  ]
+}
