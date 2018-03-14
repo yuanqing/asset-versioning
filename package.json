@@ -22,7 +22,7 @@
     "uglify-js": "^3.3.14"
   },
   "scripts": {
-    "clean": "rm -rf *.log coverage",
+    "clean": "rm -rf *.log coverage test/output",
     "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
     "fix": "prettier-standard index.js 'test/**/*.js'",
     "lint": "standard index.js 'test/**/*.js'",
