@@ -11,6 +11,7 @@
   "dependencies": {
     "fs-extra": "^5.0.0",
     "glob": "^7.1.2",
+    "isbinaryfile": "^3.0.2",
     "rev-file": "^3.0.0"
   },
   "devDependencies": {
