@@ -1,11 +1,11 @@
 const fs = require('fs-extra')
 const path = require('path')
+const promisify = require('util').promisify
 const revFile = require('rev-file')
-const util = require('util')
 
-const glob = util.promisify(require('glob'))
-const isBinaryFile = util.promisify(require('isbinaryfile'))
-const writeFile = util.promisify(fs.writeFile)
+const glob = promisify(require('glob'))
+const isBinaryFile = promisify(require('isbinaryfile'))
+const writeFile = promisify(fs.writeFile)
 
 async function getFiles (globs, baseDirectory) {
   const globResult = await Promise.all(
@@ -19,7 +19,8 @@ async function getFiles (globs, baseDirectory) {
 }
 
 async function build (globs, outputDirectory, options) {
-  const baseDirectory = options ? options.baseDirectory : process.cwd()
+  const baseDirectory =
+    options && options.baseDirectory ? options.baseDirectory : process.cwd()
   const manifest = {}
   const files = await getFiles(globs, baseDirectory)
   if (files.length === 0) {
@@ -45,7 +46,8 @@ async function build (globs, outputDirectory, options) {
 }
 
 async function replace (globs, manifest, options) {
-  const baseDirectory = options ? options.baseDirectory : process.cwd()
+  const baseDirectory =
+    options && options.baseDirectory ? options.baseDirectory : process.cwd()
   const files = await getFiles(globs, baseDirectory)
   return Promise.all(
     files.map(async function (file) {
