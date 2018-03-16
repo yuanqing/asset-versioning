@@ -4,7 +4,7 @@ const fs = require('fs-extra')
 const path = require('path')
 const test = require('tape')
 
-const buildGlobs = ['fixtures/*.md']
+const globs = ['fixtures/*.md']
 const baseDirectory = __dirname
 const outputDirectory = 'output'
 const outputDirectoryAbsolutePath = path.join(baseDirectory, outputDirectory)
@@ -17,17 +17,17 @@ test('creates the `outputDirectory`', async function (t) {
   t.plan(2)
   await cleanUp()
   t.false(await fs.pathExists(outputDirectoryAbsolutePath))
-  await assetVersioning(buildGlobs, outputDirectory, {
+  await assetVersioning(globs, outputDirectory, {
     baseDirectory: baseDirectory
   })
   t.true(await fs.pathExists(outputDirectoryAbsolutePath))
   await cleanUp()
 })
 
-test('versions files matched by `buildGlobs`, returns original filenames mapped to their corresponding versioned filenames', async function (t) {
+test('versions files matched by `globs`, returns original filenames mapped to their corresponding versioned filenames', async function (t) {
   t.plan(1)
   await cleanUp()
-  const manifest = await assetVersioning(buildGlobs, outputDirectory, {
+  const manifest = await assetVersioning(globs, outputDirectory, {
     baseDirectory: baseDirectory
   })
   t.looseEqual(manifest, {
@@ -37,7 +37,7 @@ test('versions files matched by `buildGlobs`, returns original filenames mapped 
   await cleanUp()
 })
 
-test('does not create `outputDirectory` if `buildGlobs` do not match any file', async function (t) {
+test('does not create `outputDirectory` if `globs` do not match any file', async function (t) {
   t.plan(2)
   await cleanUp()
   t.false(await fs.pathExists(outputDirectoryAbsolutePath))
@@ -48,20 +48,24 @@ test('does not create `outputDirectory` if `buildGlobs` do not match any file', 
   await cleanUp()
 })
 
-test('`manifest` is an empty object if `buildGlobs` do not match any file', async function (t) {
+test('`manifest` is an empty object if `globs` do not match any file', async function (t) {
   t.plan(1)
   await cleanUp()
-  const manifest = await assetVersioning(['nonExistentDirectory'], outputDirectory, {
-    baseDirectory: baseDirectory
-  })
+  const manifest = await assetVersioning(
+    ['nonExistentDirectory'],
+    outputDirectory,
+    {
+      baseDirectory: baseDirectory
+    }
+  )
   t.looseEqual(manifest, {})
   await cleanUp()
 })
 
-test('versions files matched by `buildGlobs`, outputs the versioned files the `outputDirectory`', async function (t) {
+test('versions files matched by `globs`, outputs the versioned files into the `outputDirectory`', async function (t) {
   t.plan(6)
   await cleanUp()
-  const manifest = await assetVersioning(buildGlobs, outputDirectory, {
+  const manifest = await assetVersioning(globs, outputDirectory, {
     baseDirectory: baseDirectory
   })
   await Object.keys(manifest).map(async function (originalFile) {
