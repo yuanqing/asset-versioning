@@ -8,10 +8,15 @@
     "type": "git",
     "url": "git://github.com/yuanqing/asset-versioning.git"
   },
+  "bin": {
+    "asset-versioning": "bin/asset-versioning.js"
+  },
   "dependencies": {
     "fs-extra": "^5.0.0",
+    "get-stdin": "^6.0.0",
     "glob": "^7.1.2",
     "isbinaryfile": "^3.0.2",
+    "nopt": "^4.0.1",
     "rev-file": "^3.0.0"
   },
   "devDependencies": {
@@ -24,8 +29,8 @@
   "scripts": {
     "clean": "rm -rf *.log coverage test/output",
     "coverage": "yarn clean && nyc --reporter=html --reporter=lcov --reporter=text npm test",
-    "fix": "prettier-standard index.js 'test/**/*.js'",
-    "lint": "standard index.js 'test/**/*.js'",
+    "fix": "prettier-standard index.js bin/asset-versioning.js 'test/**/*.js'",
+    "lint": "standard index.js bin/asset-versioning.js 'test/**/*.js'",
     "test": "tape 'test/**/*.js'"
   },
   "keywords": [

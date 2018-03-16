@@ -1,0 +1,11 @@
+Usage: asset-versioning replace [globs] [options]
+
+Globs:
+  One or more globs to do a find-and-replace of original filenames with their
+  versioned filenames.
+
+Options:
+  -o, --baseDirectory BASE_DIRECTORY  Directory in which to match files.
+  -m, --manifestFile MANIFEST_FILE    A JSON file mapping original to
+                                      versioned filenames.
+  -h, --help                          Print this message.

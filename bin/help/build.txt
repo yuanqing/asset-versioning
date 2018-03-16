@@ -1,0 +1,10 @@
+Usage: asset-versioning build [globs] [options]
+
+Globs:
+  One or more globs that match the files to be versioned.
+
+Options:
+  -o, --baseDirectory BASE_DIRECTORY      Directory in which to match files
+  -p, --outputDirectory OUTPUT_DIRECTORY  Directory to output the versioned
+                                          files.
+  -h, --help                              Print this message.
