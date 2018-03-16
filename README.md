@@ -4,6 +4,14 @@
 
 ## Usage
 
+```js
+const assetVersioning = require('asset-versioning')
+
+assetVersioning(['css/*.css', 'js/*.js'], 'build').then(function (manifest) {
+  assetVersioning.replace(['build/**/*'], manifest)
+})
+```
+
 ```sh
 $ asset-versioning build 'css/*.css' 'js/*.js' --output build | asset-versioning replace 'build/**/*'
 ```
