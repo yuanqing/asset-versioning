@@ -17,8 +17,9 @@ function cleanUp () {
 test('replaces all occurrences of original filenames with their versioned filenames based on the `manifest`', async function (t) {
   t.plan(1)
   await cleanUp()
-  const manifest = await assetVersioning(buildGlobs, outputDirectory, {
-    baseDirectory: baseDirectory
+  const manifest = await assetVersioning(buildGlobs, {
+    baseDirectory: baseDirectory,
+    outputDirectory: outputDirectory
   })
   await assetVersioning.replace(replaceGlobs, manifest, {
     baseDirectory: baseDirectory

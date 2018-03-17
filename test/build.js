@@ -17,8 +17,9 @@ test('creates the `outputDirectory`', async function (t) {
   t.plan(2)
   await cleanUp()
   t.false(await fs.pathExists(outputDirectoryAbsolutePath))
-  await assetVersioning(globs, outputDirectory, {
-    baseDirectory: baseDirectory
+  await assetVersioning(globs, {
+    baseDirectory: baseDirectory,
+    outputDirectory: outputDirectory
   })
   t.true(await fs.pathExists(outputDirectoryAbsolutePath))
   await cleanUp()
@@ -27,8 +28,9 @@ test('creates the `outputDirectory`', async function (t) {
 test('versions files matched by `globs`, returns original filenames mapped to their corresponding versioned filenames', async function (t) {
   t.plan(1)
   await cleanUp()
-  const manifest = await assetVersioning(globs, outputDirectory, {
-    baseDirectory: baseDirectory
+  const manifest = await assetVersioning(globs, {
+    baseDirectory: baseDirectory,
+    outputDirectory: outputDirectory
   })
   t.looseEqual(manifest, {
     'fixtures/bar.md': 'fixtures/bar-b88f2c2110.md',
@@ -41,8 +43,9 @@ test('does not create `outputDirectory` if `globs` do not match any file', async
   t.plan(2)
   await cleanUp()
   t.false(await fs.pathExists(outputDirectoryAbsolutePath))
-  await assetVersioning(['nonExistentDirectory'], outputDirectory, {
-    baseDirectory: baseDirectory
+  await assetVersioning(['nonExistentDirectory'], {
+    baseDirectory: baseDirectory,
+    outputDirectory: outputDirectory
   })
   t.false(await fs.pathExists(outputDirectoryAbsolutePath))
   await cleanUp()
@@ -53,9 +56,9 @@ test('`manifest` is an empty object if `globs` do not match any file', async fun
   await cleanUp()
   const manifest = await assetVersioning(
     ['nonExistentDirectory'],
-    outputDirectory,
     {
-      baseDirectory: baseDirectory
+      baseDirectory: baseDirectory,
+      outputDirectory: outputDirectory
     }
   )
   t.looseEqual(manifest, {})
@@ -65,8 +68,9 @@ test('`manifest` is an empty object if `globs` do not match any file', async fun
 test('versions files matched by `globs`, outputs the versioned files into the `outputDirectory`', async function (t) {
   t.plan(6)
   await cleanUp()
-  const manifest = await assetVersioning(globs, outputDirectory, {
-    baseDirectory: baseDirectory
+  const manifest = await assetVersioning(globs, {
+    baseDirectory: baseDirectory,
+    outputDirectory: outputDirectory
   })
   await Object.keys(manifest).map(async function (originalFile) {
     const originalFileAbsolutePath = path.join(baseDirectory, originalFile)

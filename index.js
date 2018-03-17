@@ -18,9 +18,10 @@ async function getFiles (globs, baseDirectory) {
   }, [])
 }
 
-async function build (globs, outputDirectory, options) {
-  const baseDirectory =
-    options && options.baseDirectory ? options.baseDirectory : process.cwd()
+async function build (globs, options) {
+  options = options || {}
+  const baseDirectory = options.baseDirectory || process.cwd()
+  const outputDirectory = options.outputDirectory || 'build'
   const manifest = {}
   const files = await getFiles(globs, baseDirectory)
   if (files.length === 0) {
