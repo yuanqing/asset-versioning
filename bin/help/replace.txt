@@ -1,20 +1,22 @@
+
 Usage: asset-versioning replace [globs] [options]
 
+Replaces original filenames with their versioned filenames (as
+specified in a manifest) in the files matched by globs.
+
 Globs:
-  One or more globs for matching files to perform a
-  find-and-replace of original filenames with their versioned
-  filenames.
+  One or more globs. (Ignores binary files.)
 
 Options:
-  -b, --baseDirectory BASE_DIRECTORY  Directory in which to
-                                      match files. Defaults to
-                                      the current directory.
-  -m, --manifestFile MANIFEST_FILE    A JSON file mapping the
-                                      original filenames to the
-                                      versioned filenames. Read
-                                      from stdin if this is not
-                                      specified.
-  -h, --help                          Print this message.
+  -b, --baseDirectory BASE_DIRECTORY  Base directory to perform the
+                                      globbing. Defaults to the
+                                      current directory.
+  -m, --manifestFile MANIFEST_FILE  A JSON file mapping the original
+                                    filenames to the versioned
+                                    filenames. Read from stdin if
+                                    this is not specified.
+  -h, --help  Print this message.
 
 Example:
   asset-versioning replace 'build/**/*' --manifestFile manifest.json
+

@@ -1,16 +1,21 @@
+
 Usage: asset-versioning build [globs] [options]
 
+Versions the files matched by globs. Writes a JSON object
+mapping the original filenames to the versioned filenames to stdout.
+
 Globs:
-  One or more globs for matching files to be versioned.
+  One or more globs.
 
 Options:
-  -b, --baseDirectory BASE_DIRECTORY      Directory in which to
-                                          match files. Defaults to
-                                          the current directory.
+  -b, --baseDirectory BASE_DIRECTORY  Base directory to perform the
+                                      globbing. Defaults to the
+                                      current directory.
   -o, --outputDirectory OUTPUT_DIRECTORY  Directory to output the
                                           versioned files. Defaults
                                           to 'build'.
-  -h, --help                              Print this message.
+  -h, --help  Print this message.
 
 Example:
   asset-versioning build 'css/**/*.css' 'js/**/*.js' --outputDirectory build
+
