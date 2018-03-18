@@ -6,7 +6,7 @@
 
 Using the CLI:
 
-```
+```sh
 $ asset-versioning build 'css/**/*.css' 'js/**/*.js' --outputDirectory build | asset-versioning replace 'build/**/*'
 ```
 
@@ -28,7 +28,7 @@ run()
 
 ### Build
 
-```
+```sh
 $ asset-versioning build --help
 
 Usage: asset-versioning build [globs] [options]
@@ -54,7 +54,7 @@ Example:
 
 ### Replace
 
-```
+```sh
 $ asset-versioning replace --help
 
 Usage: asset-versioning replace [globs] [options]
