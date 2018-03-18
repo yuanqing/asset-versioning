@@ -6,22 +6,21 @@ const test = require('tape')
 
 const globs = ['fixtures/*.md']
 const baseDirectory = __dirname
-const outputDirectory = 'output'
-const outputDirectoryAbsolutePath = path.join(baseDirectory, outputDirectory)
+const outputDirectory = path.join(__dirname, 'output')
 
 function cleanUp () {
-  return fs.remove(outputDirectoryAbsolutePath)
+  return fs.remove(outputDirectory)
 }
 
 test('creates the `outputDirectory`', async function (t) {
   t.plan(2)
   await cleanUp()
-  t.false(await fs.pathExists(outputDirectoryAbsolutePath))
+  t.false(await fs.pathExists(outputDirectory))
   await assetVersioning.build(globs, {
     baseDirectory: baseDirectory,
     outputDirectory: outputDirectory
   })
-  t.true(await fs.pathExists(outputDirectoryAbsolutePath))
+  t.true(await fs.pathExists(outputDirectory))
   await cleanUp()
 })
 
@@ -42,12 +41,12 @@ test('versions files matched by `globs`, returns original filenames mapped to th
 test('does not create `outputDirectory` if `globs` do not match any file', async function (t) {
   t.plan(2)
   await cleanUp()
-  t.false(await fs.pathExists(outputDirectoryAbsolutePath))
+  t.false(await fs.pathExists(outputDirectory))
   await assetVersioning.build(['nonExistentDirectory'], {
     baseDirectory: baseDirectory,
     outputDirectory: outputDirectory
   })
-  t.false(await fs.pathExists(outputDirectoryAbsolutePath))
+  t.false(await fs.pathExists(outputDirectory))
   await cleanUp()
 })
 
@@ -73,7 +72,7 @@ test('versions files matched by `globs`, outputs the versioned files into the `o
     const originalFileAbsolutePath = path.join(baseDirectory, originalFile)
     t.true(await fs.pathExists(originalFileAbsolutePath))
     const versionedFileAbsolutePath = path.join(
-      outputDirectoryAbsolutePath,
+      outputDirectory,
       manifest[originalFile]
     )
     t.true(await fs.pathExists(versionedFileAbsolutePath))

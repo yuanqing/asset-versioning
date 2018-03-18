@@ -21,13 +21,13 @@ async function getFiles (globs, baseDirectory) {
 async function build (globs, options) {
   options = options || {}
   const baseDirectory = options.baseDirectory || process.cwd()
-  const outputDirectory = options.outputDirectory || 'build'
+  const outputDirectory = options.outputDirectory || path.join(process.cwd(), 'build')
   const manifest = {}
   const files = await getFiles(globs, baseDirectory)
   if (files.length === 0) {
     return {}
   }
-  await fs.ensureDir(path.join(baseDirectory, outputDirectory))
+  await fs.ensureDir(outputDirectory)
   await Promise.all(
     files.map(async function (file) {
       const fileAbsolutePath = path.join(baseDirectory, file)
@@ -39,7 +39,7 @@ async function build (globs, options) {
       manifest[file] = versionedFile
       return fs.copy(
         fileAbsolutePath,
-        path.join(baseDirectory, outputDirectory, versionedFile)
+        path.join(outputDirectory, versionedFile)
       )
     })
   )

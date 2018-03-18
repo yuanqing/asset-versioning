@@ -7,11 +7,10 @@ const test = require('tape')
 const buildGlobs = ['fixtures/*.md']
 const replaceGlobs = ['output/fixtures/*.md']
 const baseDirectory = __dirname
-const outputDirectory = 'output'
-const outputDirectoryAbsolutePath = path.join(baseDirectory, outputDirectory)
+const outputDirectory = path.join(__dirname, 'output')
 
 function cleanUp () {
-  return fs.remove(outputDirectoryAbsolutePath)
+  return fs.remove(outputDirectory)
 }
 
 test('replaces all occurrences of original filenames with their versioned filenames based on the `manifest`', async function (t) {
@@ -25,7 +24,6 @@ test('replaces all occurrences of original filenames with their versioned filena
     baseDirectory: baseDirectory
   })
   const fileAbsolutePath = path.join(
-    baseDirectory,
     outputDirectory,
     manifest['fixtures/foo.md']
   )
