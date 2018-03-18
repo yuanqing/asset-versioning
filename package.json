@@ -1,6 +1,6 @@
 {
   "name": "asset-versioning",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Version your assets by appending a hash to the filename.",
   "author": "Lim Yuan Qing",
   "license": "MIT",
