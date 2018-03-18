@@ -59,10 +59,11 @@ $ asset-versioning replace --help
 Usage: asset-versioning replace [globs] [options]
 
 Replaces original filenames with their versioned filenames (as
-specified in a manifest) in the files matched by globs.
+specified in a manifest) in the files matched by globs. Ignores
+binary files matched by the globs.
 
 Globs:
-  One or more globs. (Ignores binary files.)
+  One or more globs.
 
 Options:
   -b, --baseDirectory BASE_DIRECTORY  Base directory to perform the
@@ -83,7 +84,7 @@ Example:
 const assetVersioning = require('asset-versioning')
 ```
 
-## assetVersioning.build(globs [, options])
+### assetVersioning.build(globs [, options])
 
 Versions the files matched by `globs`. Returns a Promise for an object mapping the original filenames to the versioned filenames.
 
@@ -95,11 +96,11 @@ Versions the files matched by `globs`. Returns a Promise for an object mapping t
     `baseDirectory` | Base directory to perform the globbing. | `process.cwd()`
     `outputDirectory` | Directory to output the versioned files. | `./build`
 
-## assetVersioning.replace(globs, manifest [, options])
+### assetVersioning.replace(globs, manifest [, options])
 
-Replaces original filenames with their versioned filenames (as specified in the `manifest`) in the files matched by `globs`.
+Replaces original filenames with their versioned filenames (as specified in the `manifest`) in the files matched by `globs`. Ignores binary files matched by the globs.
 
-- `globs` is an array of one or more globs. (Ignores binary files.)
+- `globs` is an array of one or more globs.
 - `manifest` is an object mapping the original filenames to the versioned filenames.
 - `options` is an object literal:
 

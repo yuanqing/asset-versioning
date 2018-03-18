@@ -2,7 +2,8 @@
 Usage: asset-versioning replace [globs] [options]
 
 Replaces original filenames with their versioned filenames (as
-specified in a manifest) in the files matched by globs.
+specified in a manifest) in the files matched by globs. Ignores
+binary files matched by the globs.
 
 Globs:
   One or more globs. (Ignores binary files.)
