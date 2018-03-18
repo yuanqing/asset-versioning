@@ -6,7 +6,7 @@ const test = require('tape')
 
 const globs = ['fixtures/*.md']
 const baseDirectory = __dirname
-const outputDirectory = path.join(__dirname, 'output')
+const outputDirectory = path.join(__dirname, 'build')
 
 function cleanUp () {
   return fs.remove(outputDirectory)
@@ -39,10 +39,12 @@ test('versions files matched by `globs`, returns original filenames mapped to th
 })
 
 test('does not create `outputDirectory` if `globs` do not match any file', async function (t) {
-  t.plan(2)
+  t.plan(3)
   await cleanUp()
+  const nonExistentDirectory = 'non-existent-directory'
+  t.false(await fs.pathExists(nonExistentDirectory))
   t.false(await fs.pathExists(outputDirectory))
-  await assetVersioning.build(['nonExistentDirectory'], {
+  await assetVersioning.build([`${nonExistentDirectory}/**/*`], {
     baseDirectory: baseDirectory,
     outputDirectory: outputDirectory
   })
@@ -51,9 +53,11 @@ test('does not create `outputDirectory` if `globs` do not match any file', async
 })
 
 test('`manifest` is an empty object if `globs` do not match any file', async function (t) {
-  t.plan(1)
+  t.plan(2)
   await cleanUp()
-  const manifest = await assetVersioning.build(['nonExistentDirectory'], {
+  const nonExistentDirectory = 'non-existent-directory'
+  t.false(await fs.pathExists(nonExistentDirectory))
+  const manifest = await assetVersioning.build([`${nonExistentDirectory}/**/*`], {
     baseDirectory: baseDirectory,
     outputDirectory: outputDirectory
   })

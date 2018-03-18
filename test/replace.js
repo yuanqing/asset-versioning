@@ -5,9 +5,9 @@ const path = require('path')
 const test = require('tape')
 
 const buildGlobs = ['fixtures/*.md']
-const replaceGlobs = ['output/fixtures/*.md']
+const replaceGlobs = ['build/fixtures/*.md']
 const baseDirectory = __dirname
-const outputDirectory = path.join(__dirname, 'output')
+const outputDirectory = path.join(__dirname, 'build')
 
 function cleanUp () {
   return fs.remove(outputDirectory)
