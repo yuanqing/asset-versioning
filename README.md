@@ -46,7 +46,7 @@ Options:
   -h, --help  Print this message.
 
 Example:
-  asset-versioning build 'css/**/*.css' 'js/**/*.js' --outputDirectory build
+  asset-versioning build 'css/**/*.css' 'js/**/*.js' --outputDirectory build > manifest.json
 ```
 
 ### Replace
