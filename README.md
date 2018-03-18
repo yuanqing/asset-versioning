@@ -96,7 +96,7 @@ Versions the files matched by `globs`. Returns a Promise for an object mapping t
 
 ### assetVersioning.replace(globs, manifest [, options])
 
-Replaces original filenames with their versioned filenames (as specified in the `manifest`) in the files matched by `globs`. Ignores binary files matched by the globs.
+Replaces original filenames with their versioned filenames (as specified in the `manifest`) in the files matched by `globs`. Ignores binary files matched by the `globs`.
 
 - `globs` is an array of one or more globs.
 - `manifest` is an object mapping the original filenames to the versioned filenames.
