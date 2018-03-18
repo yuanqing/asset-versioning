@@ -1,6 +1,5 @@
 .DS_Store
-/coverage
-/node_modules
-/.nyc_output
-/test/build
+.nyc_output
 *.log
+node_modules/
+test/build/
