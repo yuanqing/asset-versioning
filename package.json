@@ -33,6 +33,10 @@
     "lint": "standard index.js bin/asset-versioning.js 'test/**/*.js'",
     "test": "tape 'test/**/*.js'"
   },
+  "files": [
+    "bin/",
+    "index.js"
+  ],
   "keywords": [
     "asset",
     "cache",
