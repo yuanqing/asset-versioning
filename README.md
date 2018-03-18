@@ -24,36 +24,6 @@ async function run () {
 run()
 ```
 
-## API
-
-```js
-const assetVersioning = require('asset-versioning')
-```
-
-## assetVersioning.build(globs [, options])
-
-Versions the files matched by `globs`. Returns a Promise for an object mapping the original filenames to the versioned filenames.
-
-- `globs` is an array of one or more globs.
-- `options` is an object literal:
-
-    Key | Description | Default
-    :--|:--|:--
-    `baseDirectory` | Base directory to perform the globbing. | `process.cwd()`
-    `outputDirectory` | Directory to output the versioned files. | `build`
-
-## assetVersioning.replace(globs, manifest [, options])
-
-Replaces original filenames with their versioned filenames (as specified in the `manifest`) in the files matched by `globs`.
-
-- `globs` is an array of one or more globs. (Ignores binary files.)
-- `manifest` is an object mapping the original filenames to the versioned filenames.
-- `options` is an object literal:
-
-    Key | Description | Default
-    :--|:--|:--
-    `baseDirectory` | Base directory to perform the globbing. | `process.cwd()`
-
 ## CLI
 
 ### Build
@@ -108,6 +78,36 @@ Options:
 Example:
   asset-versioning replace 'build/**/*' --manifestFile manifest.json
 ```
+
+## API
+
+```js
+const assetVersioning = require('asset-versioning')
+```
+
+## assetVersioning.build(globs [, options])
+
+Versions the files matched by `globs`. Returns a Promise for an object mapping the original filenames to the versioned filenames.
+
+- `globs` is an array of one or more globs.
+- `options` is an object literal:
+
+    Key | Description | Default
+    :--|:--|:--
+    `baseDirectory` | Base directory to perform the globbing. | `process.cwd()`
+    `outputDirectory` | Directory to output the versioned files. | `build`
+
+## assetVersioning.replace(globs, manifest [, options])
+
+Replaces original filenames with their versioned filenames (as specified in the `manifest`) in the files matched by `globs`.
+
+- `globs` is an array of one or more globs. (Ignores binary files.)
+- `manifest` is an object mapping the original filenames to the versioned filenames.
+- `options` is an object literal:
+
+    Key | Description | Default
+    :--|:--|:--
+    `baseDirectory` | Base directory to perform the globbing. | `process.cwd()`
 
 ## Installation
 
