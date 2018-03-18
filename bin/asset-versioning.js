@@ -42,7 +42,7 @@ async function build (args) {
   const globs = options.argv.remain
   const outputDirectory = options.outputDirectory
   const baseDirectory = options.baseDirectory
-  const manifest = await assetVersioning(globs, outputDirectory, {
+  const manifest = await assetVersioning.build(globs, outputDirectory, {
     baseDirectory: baseDirectory
   })
   process.stdout.write(`${JSON.stringify(manifest, null, 2)}\n`)

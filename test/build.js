@@ -17,7 +17,7 @@ test('creates the `outputDirectory`', async function (t) {
   t.plan(2)
   await cleanUp()
   t.false(await fs.pathExists(outputDirectoryAbsolutePath))
-  await assetVersioning(globs, {
+  await assetVersioning.build(globs, {
     baseDirectory: baseDirectory,
     outputDirectory: outputDirectory
   })
@@ -28,7 +28,7 @@ test('creates the `outputDirectory`', async function (t) {
 test('versions files matched by `globs`, returns original filenames mapped to their corresponding versioned filenames', async function (t) {
   t.plan(1)
   await cleanUp()
-  const manifest = await assetVersioning(globs, {
+  const manifest = await assetVersioning.build(globs, {
     baseDirectory: baseDirectory,
     outputDirectory: outputDirectory
   })
@@ -43,7 +43,7 @@ test('does not create `outputDirectory` if `globs` do not match any file', async
   t.plan(2)
   await cleanUp()
   t.false(await fs.pathExists(outputDirectoryAbsolutePath))
-  await assetVersioning(['nonExistentDirectory'], {
+  await assetVersioning.build(['nonExistentDirectory'], {
     baseDirectory: baseDirectory,
     outputDirectory: outputDirectory
   })
@@ -54,13 +54,10 @@ test('does not create `outputDirectory` if `globs` do not match any file', async
 test('`manifest` is an empty object if `globs` do not match any file', async function (t) {
   t.plan(1)
   await cleanUp()
-  const manifest = await assetVersioning(
-    ['nonExistentDirectory'],
-    {
-      baseDirectory: baseDirectory,
-      outputDirectory: outputDirectory
-    }
-  )
+  const manifest = await assetVersioning.build(['nonExistentDirectory'], {
+    baseDirectory: baseDirectory,
+    outputDirectory: outputDirectory
+  })
   t.looseEqual(manifest, {})
   await cleanUp()
 })
@@ -68,7 +65,7 @@ test('`manifest` is an empty object if `globs` do not match any file', async fun
 test('versions files matched by `globs`, outputs the versioned files into the `outputDirectory`', async function (t) {
   t.plan(6)
   await cleanUp()
-  const manifest = await assetVersioning(globs, {
+  const manifest = await assetVersioning.build(globs, {
     baseDirectory: baseDirectory,
     outputDirectory: outputDirectory
   })

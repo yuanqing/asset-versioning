@@ -73,5 +73,7 @@ async function replace (globs, manifest, options) {
   )
 }
 
-module.exports = build
-module.exports.replace = replace
+module.exports = {
+  build: build,
+  replace: replace
+}
