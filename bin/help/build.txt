@@ -9,11 +9,10 @@ Globs:
 
 Options:
   -b, --baseDirectory BASE_DIRECTORY  Base directory to perform the
-                                      globbing. Defaults to the
-                                      current directory.
+                                      globbing. Defaults to './'.
   -o, --outputDirectory OUTPUT_DIRECTORY  Directory to output the
                                           versioned files. Defaults
-                                          to 'build'.
+                                          to './build'.
   -h, --help  Print this message.
 
 Example:

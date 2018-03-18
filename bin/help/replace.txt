@@ -9,8 +9,7 @@ Globs:
 
 Options:
   -b, --baseDirectory BASE_DIRECTORY  Base directory to perform the
-                                      globbing. Defaults to the
-                                      current directory.
+                                      globbing. Defaults to './'.
   -m, --manifestFile MANIFEST_FILE  A JSON file mapping the original
                                     filenames to the versioned
                                     filenames. Read from stdin if

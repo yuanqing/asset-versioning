@@ -41,11 +41,10 @@ Globs:
 
 Options:
   -b, --baseDirectory BASE_DIRECTORY  Base directory to perform the
-                                      globbing. Defaults to the
-                                      current directory.
+                                      globbing. Defaults to './'.
   -o, --outputDirectory OUTPUT_DIRECTORY  Directory to output the
                                           versioned files. Defaults
-                                          to 'build'.
+                                          to './build'.
   -h, --help  Print this message.
 
 Example:
@@ -67,8 +66,7 @@ Globs:
 
 Options:
   -b, --baseDirectory BASE_DIRECTORY  Base directory to perform the
-                                      globbing. Defaults to the
-                                      current directory.
+                                      globbing. Defaults to './'.
   -m, --manifestFile MANIFEST_FILE  A JSON file mapping the original
                                     filenames to the versioned
                                     filenames. Read from stdin if
@@ -95,7 +93,7 @@ Versions the files matched by `globs`. Returns a Promise for an object mapping t
     Key | Description | Default
     :--|:--|:--
     `baseDirectory` | Base directory to perform the globbing. | `process.cwd()`
-    `outputDirectory` | Directory to output the versioned files. | `build`
+    `outputDirectory` | Directory to output the versioned files. | `./build`
 
 ## assetVersioning.replace(globs, manifest [, options])
 
