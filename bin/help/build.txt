@@ -1,8 +1,8 @@
 
 Usage: asset-versioning build [globs] [options]
 
-Versions the files matched by globs. Writes a JSON object
-mapping the original filenames to the versioned filenames to stdout.
+Versions the files matched by globs. Writes a JSON object mapping
+the original filenames to the versioned filenames to stdout.
 
 Globs:
   One or more globs.

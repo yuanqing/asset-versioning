@@ -4,13 +4,11 @@
 
 ## Usage
 
-Using the CLI:
-
 ```sh
 $ asset-versioning build 'css/**/*.css' 'js/**/*.js' --outputDirectory build | asset-versioning replace 'build/**/*'
 ```
 
-Or equivalently, using the API:
+Or, equivalently, using the API:
 
 ```js
 const assetVersioning = require('asset-versioning')
@@ -33,8 +31,8 @@ $ asset-versioning build --help
 
 Usage: asset-versioning build [globs] [options]
 
-Versions the files matched by globs. Writes a JSON object
-mapping the original filenames to the versioned filenames to stdout.
+Versions the files matched by globs. Writes a JSON object mapping
+the original filenames to the versioned filenames to stdout.
 
 Globs:
   One or more globs.
